@@ -23,8 +23,9 @@ export const EmployeeList = () => {
                 (e.g. "iPhone, Printers, ...")
         */
         const specialtyList = employees.map(employee => employee.specialty) 
+        const specialty = [...new Set(specialtyList)]
        
-        setSpecialty(specialtyList.join(", "))
+        setSpecialty(specialty.join(", "))
 
 
     }, [employees])
