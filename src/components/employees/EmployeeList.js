@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react"
+import { useHistory } from "react-router-dom"
 
 export const EmployeeList = () => {
     const [employees, changeEmployee] = useState([])
-    const [specialties, setSpecialty]= useState([])
+    const [specialties, setSpecialty] = useState([])
+
+    const history= useHistory()
 
 
     useEffect(
@@ -22,9 +25,9 @@ export const EmployeeList = () => {
             2. Then update a state variable to be a comma-separated string
                 (e.g. "iPhone, Printers, ...")
         */
-        const specialtyList = employees.map(employee => employee.specialty) 
+        const specialtyList = employees.map(employee => employee.specialty)
         const specialty = [...new Set(specialtyList)]
-       
+
         setSpecialty(specialty.join(", "))
 
 
@@ -32,6 +35,10 @@ export const EmployeeList = () => {
 
     return (
         <>
+            <div>
+                <button onClick={() => history.push("/employees/create")}>Hire Employee</button>
+            </div>
+
             <div>
                 Specialties: {specialties}
             </div>
